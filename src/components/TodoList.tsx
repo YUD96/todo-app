@@ -34,7 +34,10 @@ const TodoList = () => {
       if (targetId === todo.id) {
         return {
           ...todo,
-          status: TodoStatus.DONE,
+          status:
+            todo.status === TodoStatus.DONE
+              ? TodoStatus.UNDONE
+              : TodoStatus.DONE,
         };
       }
       return todo;
