@@ -20,13 +20,13 @@ const TodoItem = ({ todo, onRemoveButtonClick, onDoneButtonClick }: Props) => {
         {todo.value}
       </p>
       <button
-        className="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-green"
+        className="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded"
         onClick={() => onDoneButtonClick(todo.id)}
       >
         Done
       </button>
       <button
-        className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red"
+        className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red text-red-600 hover:bg-red"
         onClick={() => onRemoveButtonClick(todo.id)}
       >
         Remove
