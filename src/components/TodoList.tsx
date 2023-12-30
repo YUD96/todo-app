@@ -14,10 +14,13 @@ const TodoList = () => {
     setInputValue(e.target.value);
   };
   const handleAddButtonClick = () => {
-    setTodoItems([
-      ...todoItems,
-      { id: nextId++, value: inputValue, status: TodoStatus.UNDONE },
-    ]);
+    if (inputValue) {
+      setTodoItems([
+        ...todoItems,
+        { id: nextId++, value: inputValue, status: TodoStatus.UNDONE },
+      ]);
+    }
+
     setInputValue("");
   };
 
@@ -51,9 +54,9 @@ const TodoList = () => {
           />
         </div>
         <div>
-          {todoItems.map((todo, index) => (
+          {todoItems.map((todo) => (
             <TodoItem
-              key={index}
+              key={todo.id}
               todo={todo}
               onRemoveButtonClick={handleRemoveButtonClick}
               onDoneButtonClick={handleDoneButtonClick}
