@@ -11,14 +11,14 @@ const TodoList = () => {
   const [todoItems, setTodoItems] = useState<Todo[]>([]);
   const [filterText, setFilterText] = useState("");
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+  const handleInputChange = (value: string) => {
+    setInputValue(value);
   };
   const handleAddButtonClick = () => {
     if (inputValue) {
       setTodoItems([
         ...todoItems,
-        { id: nextId++, value: inputValue, status: TodoStatus.UNDONE },
+        { id: nextId++, value: inputValue, status: TodoStatus.DONE },
       ]);
     }
 
