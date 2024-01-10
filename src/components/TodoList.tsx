@@ -7,22 +7,16 @@ import { TodoStatus } from "../types/TodoStatus.ts";
 let nextId = 0;
 
 const TodoList = () => {
-  const [inputValue, setInputValue] = useState("");
   const [todoItems, setTodoItems] = useState<Todo[]>([]);
   const [filterText, setFilterText] = useState("");
 
-  const handleInputChange = (value: string) => {
-    setInputValue(value);
-  };
-  const handleAddButtonClick = () => {
-    if (inputValue) {
+  const handleAddButtonClick = (value: string) => {
+    if (value) {
       setTodoItems([
         ...todoItems,
-        { id: nextId++, value: inputValue, status: TodoStatus.DONE },
+        { id: nextId++, value: value, status: TodoStatus.UNDONE },
       ]);
     }
-
-    setInputValue("");
   };
 
   const handleRemoveButtonClick = (targetId: number) => {
@@ -64,11 +58,7 @@ const TodoList = () => {
               }
             />
           </div>
-          <TodoForm
-            onInputChange={handleInputChange}
-            inputValue={inputValue}
-            onAddButtonClick={handleAddButtonClick}
-          />
+          <TodoForm onAddButtonClick={handleAddButtonClick} />
         </div>
         <div>
           {filterbleTodoItems.map((todo) => (
